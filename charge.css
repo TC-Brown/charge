@@ -1,0 +1,53 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    text-align: center;
+}
+body { 
+    background-color: #2175998b;
+    color: whitesmoke;
+}
+header { 
+    align-items: center;
+    text-align: center;
+    background-color: #217599;
+    color: whitesmoke;
+    padding: 2px;
+    border-bottom: 2px solid #aad420;
+    
+}
+#nav-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+    background-color: #217599;
+    color: whitesmoke;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    border-top: 2px solid #aad420;
+}
+
+.nav-link {
+    background-color: #aad420;
+    height: 40px;
+    width: 160px;
+    justify-content: center;
+    align-content: center;
+    font-weight: 900;
+    border-radius: 20px 20px 0 0;
+}
+.apps-container,
+.program-container,
+.software-container { 
+    background-color: rgba(170, 212, 32, 0.25);
+    border: 2px solid #aad420;
+    height: 240px;
+    margin: 5px;
+}
