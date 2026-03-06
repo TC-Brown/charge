@@ -4,18 +4,17 @@
     box-sizing: border-box;
     font-family: sans-serif;
     text-align: center;
+    user-select: none;
 }
 body { 
-    background-color: #2175998b;
+    background-color: rgb(35, 7, 91);
     color: whitesmoke;
 }
 header { 
     align-items: center;
     text-align: center;
-    background-color: #217599;
-    color: whitesmoke;
-    padding: 2px;
-    border-bottom: 2px solid #aad420;
+    background-color: rgb(35, 7, 91);
+    border-bottom: 2px solid silver;
     
 }
 #nav-bar {
@@ -24,30 +23,22 @@ header {
     justify-content: space-around;
     align-items: center;
     padding: 0;
-    background-color: #217599;
-    color: whitesmoke;
+    background-color: rgb(35, 7, 91);
+    color: rgb(35, 7, 91);
     text-align: center;
     position: fixed;
     bottom: 0;
     height: 50px;
     width: 100%;
-    border-top: 2px solid #aad420;
+    border-top: 2px solid silver;
 }
 
 .nav-link {
-    background-color: #aad420;
+    background-color: silver;
     height: 40px;
     width: 160px;
     justify-content: center;
     align-content: center;
     font-weight: 900;
     border-radius: 20px 20px 0 0;
-}
-.apps-container,
-.program-container,
-.software-container { 
-    background-color: rgba(170, 212, 32, 0.25);
-    border: 2px solid #aad420;
-    height: 240px;
-    margin: 5px;
 }
