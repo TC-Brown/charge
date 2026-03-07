@@ -7,3 +7,7 @@ gitLink.addEventListener('click', () => {
 function openApp() {
     window.location.href = "https://tc-brown.github.io/thunderbolt/";
 }
+
+function goTo() {
+    window.location.href = 'lilRedd.html';
+}

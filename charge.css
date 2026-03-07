@@ -42,3 +42,21 @@ header {
     font-weight: 900;
     border-radius: 20px 20px 0 0;
 }
+/* App tile styling */
+.appTile {
+    height: 100px;
+    width: 100px;
+    background: linear-gradient(45deg, black,silver, white, silver, black);
+    border: .5px solid white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: .5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.appTile h2 {
+    color: black;
+    font-weight: 900;
+    font-size: 15px;
+}
