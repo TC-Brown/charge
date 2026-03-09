@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../static/img/favicon.jpg">
+    <title>T.C. Brown | POS System</title>
+    <link rel="stylesheet" href="thunderbolt-pos.css">
+    <meta name="author" content="T.C. Brown">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+</head>
+
+<body>
+    <header>
+        <img src="../../../hub/app/portfolio/static/img/logo.png" alt="Logo" width="100px" height="100px" class="logo" id="logo">
+        <h1>Thunderbolt Cafe</h1>
+    </header>
+
+    <main class="main-container flex-row">
+        <section class="order flex-colomn">
+            <article class="receipt flex-column">
+                <div class="company-info flex-column">
+                    <p id="company-name">Thunderbolt Cafe</p>
+                    <p id="company-address">123 Main St</p>
+                    <p id="company-city">Any City, KY 40000</p>
+                    <p id="company-phone">555-555-5555</p>
+                    <p id="invoice-number">Invoice #0330</p>
+                </div>
+                <div class="receipt-details">
+                    <table class="details-detail">
+                        <thead>
+                            <tr>
+                                <td class="dotted-border" colspan="5"></td>
+                            </tr>
+                            <tr>
+                                <td class="empty-border" colspan="5"></td>
+                            </tr>
+                            <tr>
+                                <th class="description">Description</th>
+                                <th class="quantity">Qty.</th>
+                                <th class="price">Price</th>
+                                <th class="subtotal">Sub</th>
+                                <th class="delete">Del</th>
+                            </tr>
+                            <tr>
+                                <td class="dotted-border" colspan="5"></td>
+                            </tr>
+                            <tr>
+                                <td class="empty-border" colspan="5"></td>
+                            </tr>
+
+
+                        </thead>
+                        <tbody>
+                            <td class="description">Fries</td>
+                            <td class="quantity">1</td>
+                            <td class="price">1.99</td>
+                            <td class="subtotal">1.99</td>
+                            <td class="delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                                </svg></td>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="receipt-summary">
+                    <table class="summary-table">
+                        <tbody class="summary-table" id="total-summary">
+                            <tr>
+                                <td class="dotted-border" colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td class="empty-border" colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td>Subtotal:</td>
+                                <td id="subtotal-summary">0.00</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Tax:</td>
+                                <td id="subtotal-tax">0.00</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Total:</td>
+                                <td id="total-summary">0.00</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                        <tbody class="summary-table" id="payment-summary">
+                            <tr>
+                                <td>Amount Paid:</td>
+                                <td id="amount-paid">0.00</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td id="tip-change-title">Change:</td>
+                                <td id="tip-change-amount">0.00</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Payment Type:</td>
+                                <td id="payment-type"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="dotted-border" colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td class="empty-border" colspan="3"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="receipt-footer flex-column">
+                    <p id="receipt-message">Thank you for your business!</p>
+                    <p id="barcode">Barcode</p>
+                </div>
+            </article>
+            <!-- Toolbar for Payment processing -->
+            <div class="toolbar flex-row">
+                <button class="cash toolbar-icon"><!-- -->Cash <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" fill="currentColor" class="bi bi-cash-stack" viewBox="0 0 16 16">
+                        <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+                        <path
+                            d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z" />
+                    </svg></button>
+                <button class="card toolbar-icon"><!-- -->Card <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                        <path
+                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
+                        <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                    </svg>
+                </button>
+                <button class="delete toolbar-icon"><!-- -->Delete <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path
+                            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                    </svg></button>
+            </div>
+        </section>
+        <section class="menu-payment grid">
+            <div class="menu flex-row" id="menu">
+                <figure class="menu-item" style="width: 150px;">
+                    <img src="fries.jpg" alt="img not available" class="menu-item">
+                    <figcaption>Fries</figcaption>
+                    <figcaption>$1.99</figcaption>
+                </figure>
+                <figure class="menu-item" style="width: 150px;">
+                    <img src="fries.jpg" alt="img not available" class="menu-item">
+                    <figcaption>Fries</figcaption>
+                    <figcaption>$1.99</figcaption>
+                </figure>
+                <figure class="menu-item" style="width: 150px;">
+                    <img src="fries.jpg" alt="img not available" class="menu-item">
+                    <figcaption>Fries</figcaption>
+                    <figcaption>$1.99</figcaption>
+                </figure>
+                <figure class="menu-item" style="width: 150px;">
+                    <img src="fries.jpg" alt="img not available" class="menu-item">
+                    <figcaption>Fries</figcaption>
+                    <figcaption>$1.99</figcaption>
+                </figure>
+            </div>
+            <div class="payment grid" id="payment-overlay">
+                <div class="paypad grid" id="paypad">
+                    <button class="paypad-btn number" data-id="7">7</button>
+                    <button class="paypad-btn number" data-id="8">8</button>
+                    <button class="paypad-btn number" data-id="9">9</button>
+                    <button class="paypad-btn number" data-id="4">4</button>
+                    <button class="paypad-btn number" data-id="5">5</button>
+                    <button class="paypad-btn number" data-id="6">6</button>
+                    <button class="paypad-btn number" data-id="1">1</button>
+                    <button class="paypad-btn number" data-id="2">2</button>
+                    <button class="paypad-btn number" data-id="3">3</button>
+                    <button class="paypad-btn number" data-id="0">0</button>
+                    <button class="paypad-btn" data-id="back">back</button>
+                    <button class="paypad-btn" data-id="clear">clear</button>
+                    <button class="paypad-btn span3-col" id="close-sale" data-id="close-sale">close sale</button>
+                </div>
+                <div class="close-paypad flex">
+                    <svg id="paypad-close" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                        <path
+                            d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                    </svg> 
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <script src="../../static/js/hub.js"></script>
+    <script src="pos.js"></script>
+
+</body>
+<footer>
+    <p style="background-color: black; color: gray; font-size: 12px; margin: 2px; padding: 2px;">Version 1.3.0.dev | &copy; T. C. Brown</p>
+</footer>

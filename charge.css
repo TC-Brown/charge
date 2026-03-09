@@ -3,60 +3,55 @@
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
-    text-align: center;
     user-select: none;
 }
-body { 
-    background-color: rgb(35, 7, 91);
-    color: whitesmoke;
-}
 header { 
-    align-items: center;
+    background: linear-gradient(rgb(35, 7, 91), rgb(33, 117, 153));
+    color: rgb(192, 192,192);
+    border-bottom: .5px solid rgb(192, 192,192);
     text-align: center;
-    background-color: rgb(35, 7, 91);
-    border-bottom: 2px solid silver;
-    
 }
-#nav-bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0;
-    background-color: rgb(35, 7, 91);
-    color: rgb(35, 7, 91);
-    text-align: center;
+body {
+    background: linear-gradient(rgb(33, 117, 153), rgb(35, 7, 91)) fixed;
+
+}
+footer { 
     position: fixed;
     bottom: 0;
-    height: 50px;
     width: 100%;
-    border-top: 2px solid silver;
+    height: 30px;
+    background: linear-gradient(rgb(35, 7, 91), rgb(33, 117, 153));
+    border-top: .5px solid rgb(192, 192, 192);
+    color: rgb(192, 192, 192); 
+    text-align: center;
 }
 
-.nav-link {
-    background-color: silver;
-    height: 40px;
-    width: 160px;
-    justify-content: center;
-    align-content: center;
-    font-weight: 900;
-    border-radius: 20px 20px 0 0;
+.app-container { 
+    display: grid;
+    grid-template-columns: repeat(1, minmax(100px, 1fr));
+    margin: 5px;
+    gap: 5px;
 }
-/* App tile styling */
-.appTile {
-    height: 100px;
-    width: 100px;
-    background: linear-gradient(45deg, black,silver, white, silver, black);
-    border: .5px solid white;
-    border-radius: 10px;
-    margin: 10px;
-    padding: .5px;
+/*---------- App Style ----------*/
+.app {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 5px;
+    border: .5px solid rgb(35, 7, 91);
+    border-radius: 10px;
+    color: rgb(35, 7, 91);
+    background: linear-gradient(420deg, gray, rgb(192, 192, 192), white, rgb(192, 192, 192), gray);
+    cursor: pointer;
 }
-.appTile h2 {
-    color: black;
-    font-weight: 900;
-    font-size: 15px;
+.app img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+}
+.app p {
+    margin-top: 5px;
+    font-size: 20px;
+    color: rgb(35, 7, 91);
 }
