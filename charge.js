@@ -14,8 +14,13 @@ const posBtn = document.getElementById('pos');
 posBtn.addEventListener('click', () => {
     window.location.href = 'apps/pos/index.html';
 })
+// Invenetory Button
+const invBtn = document.getElementById('inventory');
+invBtn.addEventListener('click', () => {
+    window.location.href = 'apps/inventory/index.html';
+})
 // Lil Redd (Mobile Mechanic App) Button 
 const reddBtn = document.getElementById('lilRedd');
 reddBtn.addEventListener('click', () => {
-    window.location.href = 'apps/lilRedd/lilRedd.html';
+    window.location.href = 'apps/lilRedd/index.html';
 })

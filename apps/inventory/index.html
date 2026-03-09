@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatable" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T.C. Brown | Daily Inventory Tracker</title>
+    <link rel="icon" href="../../static/img/favicon.jpg">
+    <link rel="stylesheet" href="inventory.css">
+    <!--  Critical Script -->
+    <meta name="author" content="T. C. Brown">
+    <meta name="description" content="">
+    <meta name="keywords" content="Inventory, Management, Applications, Programs, T. C. Brown">
+</head>
+<header>
+    <h1>Daily Inventory Tracker</h1>
+</header>
+<body>
+
+    <div class="container">
+
+        <div class="form-card">
+            <!-- First input is a dropdown menu of all the items in the inventory. -->
+            <select name="itemName" id="itemName" class="itemName">
+                <option value="" selected disabled>Select an Item</option>
+                <option value="Lg. Handtossed">14" HTT</option>
+                <option value="Bacon">Bacon</option>
+                <option value="Beef">Beef</option>
+                <option value="Cheese">Cheese</option>
+                <option value="Chicken">Chicken</option>
+                <option value="It. Sausage">It. Sausage</option>
+                <option value="Pepperoni">Pepperoni</option>
+                <option value="Pork">Pork</option>
+                <option value="Wings Boneless">Wings (Boneless)</option>
+                <option value="Wings Traditional">Wings (Traditional)</option>
+            </select>
+            <!-- The next input is a dropdown menu of the locations where the item can be stored. -->
+            <select id="location" onchange="toggleInputs()">
+                <option value="" selected disabled>Select a Location</option>
+                <option value="Freezer">Freezer</option>
+                <option value="Walk-in">Walk-in</option>
+                <option value="Wing Street">Wing Street</option>
+            </select>
+            <!-- The next inputs are for the quantity of the item in the selected location. -->
+            <div id="inputGroup">
+                <input type="number" id="bins" placeholder="Bins" class="walk-in-only"> <!-- try to get the inputs to take up and even amount of space with the inventory button also add margin to the input fields -->
+                <input type="number" id="cases" placeholder="Cases">
+                <input type="number" id="bags" placeholder="Bags">
+            </div>
+
+            <button onclick="addItem()">Add to Inventory</button>
+
+        </div>
+
+        <div id="inventoryDisplay">
+            <!-- Content is displayed dynamically through JavaScript from localStorage -->
+        </div>
+
+    </div>
+
+    <script src="inventory.js"></script>
+
+</body>
+
+<footer>
+    <p>Version | 2.1.0-tbm260226 | &copy; T.C. Brown 2026</p> 
+</footer>
+
+</html>
