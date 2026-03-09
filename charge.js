@@ -3,6 +3,7 @@ const portBtn = document.getElementById('portfolio');
 portBtn.addEventListener('click', () => {
     window.location.href = 'https://tc-brown.github.io/thunderbolt/app/portfolio/index.html'
 })
+
 // Repository Button
 const repoBtn = document.getElementById('repos');
 repoBtn.addEventListener('click', () => {
@@ -14,11 +15,13 @@ const posBtn = document.getElementById('pos');
 posBtn.addEventListener('click', () => {
     window.location.href = 'apps/pos/index.html';
 })
+
 // Invenetory Button
 const invBtn = document.getElementById('inventory');
 invBtn.addEventListener('click', () => {
     window.location.href = 'apps/inventory/index.html';
 })
+
 // Lil Redd (Mobile Mechanic App) Button 
 const reddBtn = document.getElementById('lilRedd');
 reddBtn.addEventListener('click', () => {
