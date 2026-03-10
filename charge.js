@@ -27,3 +27,8 @@ const reddBtn = document.getElementById('lilRedd');
 reddBtn.addEventListener('click', () => {
     window.location.href = 'apps/lilRedd/index.html';
 })
+ // Dantes App Button 
+const danteBtn = document.getElementById('dante');
+danteBtn.addEventListener('click', () => { 
+    window.location.href = 'apps/dante/index.html';
+})
