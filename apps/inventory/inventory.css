@@ -1,45 +1,31 @@
-* {
-    box-sizing: border-box;
+* { 
     margin: 0;
     padding: 0;
-}
-/*
-  body { 
-    font-family: sans-serif; 
-    text-align: center;
-    overflow-x: hidden;
+    box-sizing: border-box;
+    font-family: sans-serif;
     user-select: none;
-    color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.5);
-    background-image: url("images.png");
-    background-size: cover;
-    background-position: center;
 }
-*/
-/* ---- Main App Styles for the Header Body and Footer ----*/
-header {
-    text-align: center;
-    padding: 10px;
-    border-bottom: 2px solid silver;
-    background: linear-gradient(to bottom, rgb(35, 7, 91), #217599);
+header { 
+    height: 45px;
+    background: linear-gradient(rgb(35, 7, 91), rgb(33, 117, 153));
     color: white;
-    text-shadow: 0px 3px 3px black;
+    text-shadow: 0 3px 3px rgb(192, 192,192);
+    border-bottom: .5px solid rgb(192, 192,192);
+    text-align: center;
 }
 body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(to bottom, #217599, rgb(35, 7, 91)) fixed;
+    background: linear-gradient(rgb(33, 117, 153), rgb(35, 7, 91)) fixed;
+
 }
 footer { 
-    text-align: center;
-    background: rgb(35, 7, 91);
-    color: silver;
-    border-top: .5px solid silver;
-    padding: .5px;
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 20px;
+    height: 19px;
+    background: rgb(35, 7, 91);
+    border-top: .5px solid rgb(192, 192, 192);
+    color: white; 
+    text-align: center;
 }
 
 /* ---- End Main App Styles for Header Body and Footer ----*/
