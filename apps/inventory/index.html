@@ -49,8 +49,10 @@
                 <input type="number" id="bags" placeholder="Bags">
             </div>
 
-            <button onclick="addItem()">Add to Inventory</button>
-
+            <div style="display: flex; gap: 10px;">
+                <button id="actionBtn" onclick="addItem()" style="flex: 1;">Add to Inventory</button>
+                <button onclick="clearForm()" style="flex: 1; background-color: #555;">Clear All</button>
+            </div>
         </div>
 
         <div id="inventoryDisplay">

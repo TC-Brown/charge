@@ -1,5 +1,6 @@
 // inventory.js Stable version 1.0.0.beta
 let inventory = JSON.parse(localStorage.getItem('kitchenInv')) || [];
+let editingItemId = null;
 
 function toggleInputs() {
     const loc = document.getElementById('location').value;
@@ -13,20 +14,26 @@ function toggleInputs() {
 }
 function addItem() {
     const itemName = document.getElementById('itemName').value;
-    const bagValue = parseInt(document.getElementById('bags').value) || 0;
+    const itemLoc = document.getElementById('location').value;
+
+    if (!itemName) return alert("Enter an item name!");
+    if (!itemLoc) return alert("Select a location!");
 
     const item = {
-        id: Date.now(),
-        name: document.getElementById('itemName').value,
-        location: document.getElementById('location').value,
+        id: editingItemId ? editingItemId : Date.now(),
+        name: itemName,
+        location: itemLoc,
         bins: (parseInt(document.getElementById('bins').value) || 0) * 1,
         cases: parseInt(document.getElementById('cases').value) || 0,
         bags: parseInt(document.getElementById('bags').value) || 0,
     };
 
-    if (!item.name) return alert("Enter an item name!");
-
-    inventory.push(item);
+    if (editingItemId) {
+        inventory = inventory.map(i => i.id === editingItemId ? item : i);
+    } else {
+        inventory.push(item);
+    }
+    
     saveAndRender();
     clearForm();
 }
@@ -76,7 +83,7 @@ function renderTables() {
             }
             else if (i.name === 'Chicken') {
                 const chixBg = i.bags * 2.5;
-                const chixCs = i.cases * 25;
+                const chixCs = i.cases * 20;
                 const chixTotal = chixBg + chixCs;
                 totalStr = `${chixTotal}`;
             }
@@ -128,10 +135,17 @@ function renderTables() {
                             ${loc !== 'Wing Street' ? `<td>${i.cases}</td>` : '' ? `<td>${i.bags}</td>` : ''}
                             <td>${i.bags}</td>
                             <td>
-                                <div class="delete-btn" onclick="deleteItem(${i.id})" style="background: rgb(35, 7, 91); display: flex; justify-content: center; align-items: center;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
-                                        <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
-                                    </svg>
+                                <div style="display: flex; gap: 5px; justify-content: center;">
+                                    <div class="edit-btn" onclick="editItem(${i.id})" title="Edit" style="background: rgb(20, 80, 20); display: flex; justify-content: center; align-items: center; border-radius: 4px; padding: 4px; cursor: pointer;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
+                                            <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q11 11 17 26t6 31q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="delete-btn" onclick="deleteItem(${i.id})" title="Delete" style="background: rgb(35, 7, 91); display: flex; justify-content: center; align-items: center; border-radius: 4px; padding: 4px; cursor: pointer;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
+                                            <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
+                                        </svg>
+                                    </div>
                                 </div>
                             </td>
                             <td>${totalStr}</td>
@@ -143,15 +157,39 @@ function renderTables() {
         `;
     }).join('');
 }
+function editItem(id) {
+    const item = inventory.find(i => i.id === id);
+    if (!item) return;
+
+    editingItemId = id;
+    document.getElementById('itemName').value = item.name;
+    document.getElementById('location').value = item.location;
+    document.getElementById('bins').value = item.bins || '';
+    document.getElementById('cases').value = item.cases || '';
+    document.getElementById('bags').value = item.bags || '';
+    
+    toggleInputs();
+    
+    const actionBtn = document.getElementById('actionBtn');
+    if (actionBtn) actionBtn.innerText = "Update Item";
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 function deleteItem(id) {
     inventory = inventory.filter(i => i.id !== id);
     saveAndRender();
 }
 function clearForm() {
+    editingItemId = null;
+    const actionBtn = document.getElementById('actionBtn');
+    if (actionBtn) actionBtn.innerText = "Add to Inventory";
+
     document.getElementById('itemName').value = '';
+    document.getElementById('location').value = '';
     document.getElementById('bins').value = '';
     document.getElementById('cases').value = '';
     document.getElementById('bags').value = '';
+    toggleInputs();
 }
 // Initial Load
 toggleInputs();

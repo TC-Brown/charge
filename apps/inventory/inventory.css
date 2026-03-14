@@ -74,21 +74,22 @@ table {
 
 th, td { 
     padding: 12px; 
-    border-bottom: 1px solid silver;
+    border-bottom: 1px solid white;
     text-align: center;
     font-weight: 600;
     font-size: 15px;
+    background-color: rgba(128, 128, 128, 0.50);
 }
 
 th { 
-    background-color: #217599; 
-    color: silver;
+    background-color: #217599;
+    color: white;
     text-shadow: 1px 1px 1px black;
     font-weight: bold;
     border: 1px solid rgb(35, 7, 91);
 }
 option { 
-    background-color: #217599;
+    background-color: rgba(128, 128, 128, 0.50);
     border: 1px solid rgb(35, 7, 91);
     color: black;
     font-weight: bold;
