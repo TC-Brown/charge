@@ -124,7 +124,7 @@ function renderTables() {
 
     html += `
         <div class="combined-totals-container" style="margin-top: 30px;">
-            <h3 style="border-top: 2px solid #ccc; padding-top: 15px;">Combined Totals</h3>
+            <h3 style="border-top: 2px solid #ccc; padding-top: 15px;">Ending Inventory Totals</h3>
             <table>
                 <thead>
                     <tr>
