@@ -1,4 +1,3 @@
-// inventory.js Stable version 1.0.0.beta
 let inventory = JSON.parse(localStorage.getItem('kitchenInv')) || [];
 let editingItemId = null;
 
@@ -41,11 +40,25 @@ function saveAndRender() {
     localStorage.setItem('kitchenInv', JSON.stringify(inventory));
     renderTables();
 }
+function getItemTotal(i) {
+    if (i.name === 'Bacon') return (i.bags * 5) + (i.cases * 20);
+    if (i.name === 'Beef') return (i.bags * 5) + (i.cases * 40);
+    if (i.name === 'Cheese') return (i.bags * 20) + (i.cases * 20);
+    if (i.name === 'Chicken') return (i.bags * 2.5) + (i.cases * 20);
+    if (i.name === 'It. Sausage') return (i.bags * 5) + (i.cases * 40);
+    if (i.name === 'Pepperoni') return (i.bags * 12.5) + (i.cases * 25);
+    if (i.name === 'Pork') return (i.bags * 5) + (i.cases * 40);
+    if (i.name === 'Lg. Handtossed') return (i.bags * 1) + (i.cases * 32) + ((i.bins || 0) * 6);
+    if (i.name === 'Wings Boneless') return (i.bags * 1) + (i.cases * 10);
+    if (i.name === 'Wings Traditional') return (i.bags * 1) + (i.cases * 10);
+    return null;
+}
+
 function renderTables() {
     const container = document.getElementById('inventoryDisplay');
     const locations = ['Freezer', 'Walk-in', 'Wing Street'];
 
-    container.innerHTML = locations.map(loc => {
+    let html = locations.map(loc => {
         const items = inventory.filter(i => i.location === loc);
         return `
             <h3>${loc}</h3>
@@ -62,77 +75,14 @@ function renderTables() {
                 </thead>
                 <tbody> <!-- Render tables -->
                     ${items.map(i => {
-            let totalStr = '';
-            if (i.name === 'Bacon') {
-                const bacBg = i.bags * 5;
-                const bacCs = i.cases * 20;
-                const bacTotal = bacBg + bacCs;
-                totalStr = `${bacTotal}`;
-            }
-            else if (i.name === 'Beef') {
-                const beefBg = i.bags * 5;
-                const beefCs = i.cases * 40;
-                const beefTotal = beefBg + beefCs;
-                totalStr = `${beefTotal}`;
-            }
-            else if (i.name === 'Cheese') {
-                const cheeseBg = i.bags * 20;
-                const cheeseCs = i.cases * 20;
-                const cheeseTotal = cheeseBg + cheeseCs;
-                totalStr = `${cheeseTotal}`;
-            }
-            else if (i.name === 'Chicken') {
-                const chixBg = i.bags * 2.5;
-                const chixCs = i.cases * 20;
-                const chixTotal = chixBg + chixCs;
-                totalStr = `${chixTotal}`;
-            }
-            else if (i.name === 'It. Sausage') {
-                const itSgBg = i.bags * 5;
-                const itSgCs = i.cases * 40;
-                const itSgTotal = itSgBg + itSgCs;
-                totalStr = `${itSgTotal}`;
-            }
-            else if (i.name === 'Pepperoni') {
-                const pepBg = i.bags * 12.5;
-                const pepCs = i.cases * 25;
-                const pepTotal = pepBg + pepCs;
-                totalStr = `${pepTotal}`;
-            }
-            else if (i.name === 'Pork') {
-                const porkBg = i.bags * 5;
-                const porkCs = i.cases * 40;
-                const porkTotal = porkBg + porkCs;
-                totalStr = `${porkTotal}`;
-            }
-            else if (i.name === 'Lg. Handtossed') {
-                const lgHtBg = i.bags * 1;
-                const lgHtCs = i.cases * 32;
-                const lgHtBin = i.bins * 6;
-                const lgHtTotal = lgHtBg + lgHtCs + lgHtBin;
-                totalStr = `${lgHtTotal}`;
-            }
-            else if (i.name === 'Wings Boneless') {
-                const wbBg = i.bags * 1;
-                const wbCs = i.cases * 10;
-                const wbTotal = wbBg + wbCs;
-                totalStr = `${wbTotal}`;
-            }
-            else if (i.name === 'Wings Traditional') {
-                const wtBg = i.bags * 1;
-                const wtCs = i.cases * 10;
-                const wtTotal = wtBg + wtCs;
-                totalStr = `${wtTotal}`;
-            }
-            else {
-                totalStr = `Item not found`;     /* get material .ico for delete button */
-            }
+            const total = getItemTotal(i);
+            const totalStr = total !== null ? `${total}` : `Item not found`;
 
             return `
                         <tr>
                             <td>${i.name}</td>
                             ${loc === 'Walk-in' ? `<td>${i.bins}</td>` : ''}
-                            ${loc !== 'Wing Street' ? `<td>${i.cases}</td>` : '' ? `<td>${i.bags}</td>` : ''}
+                            ${loc !== 'Wing Street' ? `<td>${i.cases}</td>` : ''}
                             <td>${i.bags}</td>
                             <td>
                                 <div style="display: flex; gap: 5px; justify-content: center;">
@@ -156,6 +106,45 @@ function renderTables() {
             </table>
         `;
     }).join('');
+
+    const allItems = [
+        'Lg. Handtossed', 'Bacon', 'Beef', 'Cheese', 'Chicken',
+        'It. Sausage', 'Pepperoni', 'Pork', 'Wings Boneless', 'Wings Traditional'
+    ];
+
+    const combinedTotals = {};
+    allItems.forEach(item => combinedTotals[item] = 0);
+
+    inventory.forEach(i => {
+        const total = getItemTotal(i);
+        if (total !== null && combinedTotals[i.name] !== undefined) {
+            combinedTotals[i.name] += total;
+        }
+    });
+
+    html += `
+        <div class="combined-totals-container" style="margin-top: 30px;">
+            <h3 style="border-top: 2px solid #ccc; padding-top: 15px;">Combined Totals</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Total Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${allItems.map(name => `
+                    <tr>
+                        <td>${name}</td>
+                        <td>${combinedTotals[name]}</td>
+                    </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        </div>
+    `;
+
+    container.innerHTML = html;
 }
 function editItem(id) {
     const item = inventory.find(i => i.id === id);
