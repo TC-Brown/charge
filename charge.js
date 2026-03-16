@@ -16,13 +16,8 @@ invBtn.addEventListener('click', () => {
     window.location.href = 'apps/inventory/index.html';
 })
 
-// Lil Redd (Mobile Mechanic App) Button 
-const reddBtn = document.getElementById('lilRedd');
-reddBtn.addEventListener('click', () => {
-    window.location.href = 'apps/lilRedd/index.html';
-})
- // Dantes App Button 
-const danteBtn = document.getElementById('dante');
-danteBtn.addEventListener('click', () => { 
-    window.location.href = 'apps/dante/index.html';
-})
+// Prep Button
+const prepBtn = document.getElementById('prep');
+prepBtn.addEventListener('click', () => {
+    window.location.href = 'apps/prep/index.html';
+});
