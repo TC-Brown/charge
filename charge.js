@@ -1,9 +1,3 @@
-// Portfolio Button
-const portBtn = document.getElementById('portfolio');
-portBtn.addEventListener('click', () => {
-    window.location.href = 'https://tc-brown.github.io/thunderbolt/app/portfolio/index.html'
-})
-
 // Repository Button
 const repoBtn = document.getElementById('repos');
 repoBtn.addEventListener('click', () => {
