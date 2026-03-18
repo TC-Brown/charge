@@ -181,5 +181,5 @@ function clearForm() {
     toggleInputs();
 }
 // Initial Load
-/* toggleInputs(); */
+toggleInputs();
 renderTables();
