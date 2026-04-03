@@ -129,7 +129,7 @@ function renderTables() {
                 <thead>
                     <tr>
                         <th>Item</th>
-                        <th>Total Amount</th>
+                        <th>Total</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -168,13 +168,15 @@ function deleteItem(id) {
     inventory = inventory.filter(i => i.id !== id);
     saveAndRender();
 }
-function clearForm() {
+function clearForm(clearLocation = false) {
     editingItemId = null;
     const actionBtn = document.getElementById('actionBtn');
     if (actionBtn) actionBtn.innerText = "Add to Inventory";
 
     document.getElementById('itemName').value = '';
-    document.getElementById('location').value = '';
+    if (clearLocation) {
+        document.getElementById('location').value = '';
+    }
     document.getElementById('bins').value = '';
     document.getElementById('cases').value = '';
     document.getElementById('bags').value = '';
