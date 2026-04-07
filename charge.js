@@ -1,9 +1,9 @@
-// Repository Button
+/* Repository Button
 const repoBtn = document.getElementById('repos');
 repoBtn.addEventListener('click', () => {
     window.location.href = 'https://github.com/TC-Brown';
 });
-
+*/
 // Point-of-Sale Button
 const posBtn = document.getElementById('pos');
 posBtn.addEventListener('click', () => {
@@ -21,3 +21,7 @@ const prepBtn = document.getElementById('prep');
 prepBtn.addEventListener('click', () => {
     window.location.href = 'apps/prep/index.html';
 });
+
+function alertUser() { 
+    alert('The page you are trying to access has been disabled: Contact the developer for more information.');
+}
