@@ -1,27 +1,17 @@
-/* Repository Button
-const repoBtn = document.getElementById('repos');
-repoBtn.addEventListener('click', () => {
-    window.location.href = 'https://github.com/TC-Brown';
-});
-*/
-// Point-of-Sale Button
-const posBtn = document.getElementById('pos');
-posBtn.addEventListener('click', () => {
-    window.location.href = 'apps/pos/index.html';
-});
+// Navigation Function
+function nav(id) {
+    if (id === 'repos') {
+        window.location.href = "apps/repos/index.html";
+    } else if (id === 'inventory') {
+        window.location.href = "apps/inventory/index.html";
+    } else if (id === 'prep') {
+        window.location.href = "apps/prep/index.html";
+    } else { 
+        alert("Error: \nApp '" + id + "' does not exist.");
+    }
+}
 
-// Invenetory Button
-const invBtn = document.getElementById('inventory');
-invBtn.addEventListener('click', () => {
-    window.location.href = 'apps/inventory/index.html';
-});
-
-// Prep Button
-const prepBtn = document.getElementById('prep');
-prepBtn.addEventListener('click', () => {
-    window.location.href = 'apps/prep/index.html';
-});
-
-function alertUser() { 
-    alert('The page you are trying to access has been disabled: Contact the developer for more information.');
+// Message Function
+function msg() {
+    alert("This page has been disabled by the developer.");
 }
