@@ -1,5 +1,20 @@
-let inventory = JSON.parse(localStorage.getItem('kitchenInv')) || [];
+let storedData;
+try {
+    storedData = JSON.parse(localStorage.getItem('kitchenInv'));
+} catch (e) {
+    storedData = null;
+}
+let inventory = Array.isArray(storedData) ? storedData : [];
 let editingItemId = null;
+
+function escapeHTML(str) {
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
 
 function toggleInputs() {
     const loc = document.getElementById('location').value;
@@ -18,13 +33,21 @@ function addItem() {
     if (!itemName) return alert("Enter an item name!");
     if (!itemLoc) return alert("Select a location!");
 
+    let binsVal = Number(document.getElementById('bins').value) || 0;
+    let casesVal = Number(document.getElementById('cases').value) || 0;
+    let bagsVal = Number(document.getElementById('bags').value) || 0;
+
+    if (binsVal < 0 || casesVal < 0 || bagsVal < 0) {
+        return alert("Quantities cannot be negative.");
+    }
+
     const item = {
         id: editingItemId ? editingItemId : Date.now(),
         name: itemName,
         location: itemLoc,
-        bins: (parseInt(document.getElementById('bins').value) || 0) * 1,
-        cases: parseInt(document.getElementById('cases').value) || 0,
-        bags: parseInt(document.getElementById('bags').value) || 0,
+        bins: binsVal,
+        cases: casesVal,
+        bags: bagsVal,
     };
 
     if (editingItemId) {
@@ -80,18 +103,18 @@ function renderTables() {
 
             return `
                         <tr>
-                            <td>${i.name}</td>
-                            ${loc === 'Walk-in' ? `<td>${i.bins}</td>` : ''}
-                            ${loc !== 'Wing Street' ? `<td>${i.cases}</td>` : ''}
-                            <td>${i.bags}</td>
+                            <td>${escapeHTML(i.name)}</td>
+                            ${loc === 'Walk-in' ? `<td>${escapeHTML(i.bins)}</td>` : ''}
+                            ${loc !== 'Wing Street' ? `<td>${escapeHTML(i.cases)}</td>` : ''}
+                            <td>${escapeHTML(i.bags)}</td>
                             <td>
                                 <div style="display: flex; gap: 5px; justify-content: center;">
-                                    <div class="edit-btn" onclick="editItem(${i.id})" title="Edit" style="background: rgb(20, 80, 20); display: flex; justify-content: center; align-items: center; border-radius: 4px; padding: 4px; cursor: pointer;">
+                                    <div class="edit-btn" onclick="editItem(${Number(i.id)})" title="Edit" style="background: rgb(20, 80, 20); display: flex; justify-content: center; align-items: center; border-radius: 4px; padding: 4px; cursor: pointer;">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
                                             <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q11 11 17 26t6 31q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/>
                                         </svg>
                                     </div>
-                                    <div class="delete-btn" onclick="deleteItem(${i.id})" title="Delete" style="background: rgb(35, 7, 91); display: flex; justify-content: center; align-items: center; border-radius: 4px; padding: 4px; cursor: pointer;">
+                                    <div class="delete-btn" onclick="deleteItem(${Number(i.id)})" title="Delete" style="background: rgb(35, 7, 91); display: flex; justify-content: center; align-items: center; border-radius: 4px; padding: 4px; cursor: pointer;">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="white">
                                             <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
                                         </svg>
@@ -143,7 +166,7 @@ function renderTables() {
             </table>
         </div>
         <div style="margin-top: 20px; align-items: center; justify-content: center;">
-            <button onclick="resetInventory()" style="background-color: #d9534f; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold;"></button>
+            <button onclick="resetInventory()" style="background-color: #d9534f; color: white; height: 40px; width: auto; padding: 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Reset</button>
         </div>
     `;
 
