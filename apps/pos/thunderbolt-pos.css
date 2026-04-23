@@ -183,6 +183,7 @@ figcaption {
 }
 
 #payment-overlay {
+    display: none;
     grid-column: 1;
     grid-row: 1;
     grid-template-columns: 330px auto;
@@ -197,7 +198,29 @@ figcaption {
     align-content: center;
     grid-column: 1;
     grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(5, 100px);
+    grid-template-rows: auto repeat(5, 100px);
+}
+
+.paypad-display {
+    background-color: #222;
+    color: #0f0;
+    font-family: monospace;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: right;
+    border: inset 2px #555;
+    justify-content: flex-end;
+}
+
+.paypad-balance {
+    font-size: 1rem;
+    color: #aaa;
+}
+
+.paypad-amount {
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 .span3-col {

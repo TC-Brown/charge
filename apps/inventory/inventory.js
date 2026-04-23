@@ -166,7 +166,7 @@ function renderTables() {
             </table>
         </div>
         <div style="margin-top: 20px; align-items: center; justify-content: center;">
-            <button onclick="resetInventory()" style="background-color: #d9534f; color: white; height: 40px; width: auto; padding: 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Reset</button>
+            <button onclick="resetInventory()" style="background-color: #d9534f; color: white; height: 40px; width: 40px; padding: 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;"><img src="/charge/reload.png" /></button>
         </div>
     `;
 

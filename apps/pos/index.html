@@ -53,22 +53,13 @@
 
 
                         </thead>
-                        <tbody>
-                            <td class="description">Fries</td>
-                            <td class="quantity">1</td>
-                            <td class="price">1.99</td>
-                            <td class="subtotal">1.99</td>
-                            <td class="delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                    <path
-                                        d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
-                                </svg></td>
+                        <tbody id="receipt-body">
                         </tbody>
                     </table>
                 </div>
                 <div class="receipt-summary">
                     <table class="summary-table">
-                        <tbody class="summary-table" id="total-summary">
+                        <tbody class="summary-table">
                             <tr>
                                 <td class="dotted-border" colspan="3"></td>
                             </tr>
@@ -152,29 +143,13 @@
         </section>
         <section class="menu-payment grid">
             <div class="menu flex-row" id="menu">
-                <figure class="menu-item" style="width: 150px;">
-                    <img src="fries.jpg" alt="img not available" class="menu-item">
-                    <figcaption>Fries</figcaption>
-                    <figcaption>$1.99</figcaption>
-                </figure>
-                <figure class="menu-item" style="width: 150px;">
-                    <img src="fries.jpg" alt="img not available" class="menu-item">
-                    <figcaption>Fries</figcaption>
-                    <figcaption>$1.99</figcaption>
-                </figure>
-                <figure class="menu-item" style="width: 150px;">
-                    <img src="fries.jpg" alt="img not available" class="menu-item">
-                    <figcaption>Fries</figcaption>
-                    <figcaption>$1.99</figcaption>
-                </figure>
-                <figure class="menu-item" style="width: 150px;">
-                    <img src="fries.jpg" alt="img not available" class="menu-item">
-                    <figcaption>Fries</figcaption>
-                    <figcaption>$1.99</figcaption>
-                </figure>
             </div>
             <div class="payment grid" id="payment-overlay">
                 <div class="paypad grid" id="paypad">
+                    <div id="paypad-display" class="span3-col paypad-display flex-column">
+                        <div class="paypad-balance">Balance: $<span id="paypad-balance-amount">0.00</span></div>
+                        <div class="paypad-amount">$<span id="paypad-current-amount">0.00</span></div>
+                    </div>
                     <button class="paypad-btn number" data-id="7">7</button>
                     <button class="paypad-btn number" data-id="8">8</button>
                     <button class="paypad-btn number" data-id="9">9</button>
