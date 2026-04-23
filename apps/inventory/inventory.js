@@ -142,6 +142,9 @@ function renderTables() {
                 </tbody>
             </table>
         </div>
+        <div style="margin-top: 20px; align-items: center; justify-content: center;">
+            <button onclick="resetInventory()" style="background-color: #d9534f; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold;"></button>
+        </div>
     `;
 
     container.innerHTML = html;
@@ -182,6 +185,14 @@ function clearForm(clearLocation = false) {
     document.getElementById('bags').value = '';
     toggleInputs();
 }
+
+function resetInventory() {
+    if (confirm("Are you sure you want to reset the entire inventory? This action cannot be undone.")) {
+        inventory = [];
+        saveAndRender();
+    }
+}
+
 // Initial Load
 toggleInputs();
 renderTables();
