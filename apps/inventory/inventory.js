@@ -169,8 +169,11 @@ function renderTables() {
                 </tbody>
             </table>
         </div>
-        <div style="margin-top: 20px; align-items: center; justify-content: center;">
-            <button onclick="resetInventory()" style="background-color: #d9534f; color: white; height: 40px; width: 40px; padding: 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;"><img src="/charge/reload.png" /></button>
+        <div style="margin-top: 40px; margin-bottom: 60px; display: flex; justify-content: center; width: 100%;">
+            <button class="reset-btn" onclick="resetInventory()" style="background-color: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 12px; padding: 12px 24px; cursor: pointer; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; width: auto; box-shadow: none; transition: all 0.2s;" onmouseover="this.style.backgroundColor='rgba(239, 68, 68, 0.2)'" onmouseout="this.style.backgroundColor='rgba(239, 68, 68, 0.1)'">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32-56-87.5-88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z"/></svg>
+                Reset Entire Inventory
+            </button>
         </div>
     `;
 

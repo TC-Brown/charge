@@ -2,124 +2,113 @@
 
 .container {
     width: 100%;
-    min-height: calc(100vh - 100px); /* accounts for header + footer */
-    padding: 30px 20px;
+    min-height: calc(100vh - 115px); /* header (70) + footer (45) */
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 60px; /* space for footer */
+    padding-bottom: 80px;
 }
 
-.form-card { 
+.form-card {
     background: var(--card-bg-color);
     backdrop-filter: var(--backdrop-blur);
     -webkit-backdrop-filter: var(--backdrop-blur);
-    padding: 30px;
+    padding: 35px;
     border-radius: var(--border-radius);
     border: var(--border);
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-soft);
     width: 100%;
     max-width: 700px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* subtle gradient glow behind the card */
+.form-card::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 .form-card select, 
 .form-card input[type="text"],
 .form-card input[type="number"] { 
     width: 100%;
-    padding: 14px 16px;
-    margin-bottom: 18px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
     border: var(--border);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.2);
     color: var(--text-main);
     font-size: 15px;
     outline: none;
     transition: all 0.3s ease;
+    font-weight: 500;
 }
 
 .form-card select:focus, 
-.form-card input[type="text"]:focus,
+.form-card input[type="text"],
 .form-card input[type="number"]:focus {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: var(--color-white);
-    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.4);
+    border-color: var(--color-emerald);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
 }
 
 .form-card select option {
-    background: var(--color-purple);
+    background: var(--bg-surface);
     color: var(--color-white);
 }
 
 .form-card input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--color-silver);
 }
 
 button { 
-    background: linear-gradient(135deg, var(--color-teal), var(--color-purple));
+    background: var(--accent-gradient);
     color: var(--color-white);
     border: none;
-    border-radius: 8px;
-    padding: 14px 20px;
+    border-radius: 12px;
+    padding: 16px 24px;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    box-shadow: var(--shadow);
-    transition: transform 0.2s ease, filter 0.2s ease;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     width: 100%;
+    letter-spacing: 0.5px;
 }
 
 button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
     filter: brightness(1.1);
-    transform: translateY(-2px);
 }
 
 button:active {
     transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
 }
 
-/* Adjust inline styles for buttons from HTML if possible, but keep button margins tight */
+/* Secondary Button (Clear All) */
+button[onclick*="clearForm"] {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: none;
+    border: var(--border);
+}
+
+button[onclick*="clearForm"]:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-soft);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
 div[style*="display: flex; gap: 10px;"] button {
     margin: 0;
-}
-
-table { 
-    background: var(--card-bg-color);
-    backdrop-filter: var(--backdrop-blur);
-    -webkit-backdrop-filter: var(--backdrop-blur);
-    margin: 15px auto 30px; 
-    border-collapse: separate;
-    border-spacing: 0;
-    border-radius: var(--border-radius);
-    border: var(--border);
-    overflow: hidden;
-    width: 100%;
-    box-shadow: var(--shadow);
-}
-
-th, td { 
-    padding: 16px; 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    font-size: 15px;
-    color: var(--text-main);
-}
-
-th { 
-    background: rgba(0, 0, 0, 0.2);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-size: 13px;
-    border: none;
-}
-
-tr:last-child td {
-    border-bottom: none;
-}
-
-tr:hover td {
-    background: rgba(255, 255, 255, 0.05);
 }
 
 #inventoryDisplay {
@@ -130,18 +119,57 @@ tr:hover td {
     margin: 0 auto; 
     display: flex; 
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
     width: 100%;
     max-width: 900px;
 }
 
 h3 {
     color: var(--color-white);
-    font-size: 22px;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    font-size: 24px;
+    margin-bottom: 10px;
     padding-left: 5px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+table { 
+    background: var(--card-bg-color);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: var(--border-radius);
+    border: var(--border);
+    overflow: hidden;
+    width: 100%;
+    box-shadow: var(--shadow-soft);
+}
+
+th, td { 
+    padding: 18px; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+th { 
+    background: rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 12px;
+    border: none;
+    color: var(--color-silver);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .walk-in-only { 
@@ -152,7 +180,7 @@ h3 {
     display: flex;
     gap: 15px;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 #inputGroup input {
@@ -160,17 +188,38 @@ h3 {
     flex: 1;
 }
 
-/* Specific overrides for combined totals container generated from JS */
-.combined-totals-container h3 {
-    border-top: none !important; /* Removing inline border */
-    padding-top: 20px !important;
-}
-
+/* Edit / Delete Buttons in JS */
 .edit-btn, .delete-btn {
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: all 0.2s ease;
 }
 
-.edit-btn:hover, .delete-btn:hover {
+.edit-btn:hover {
+    background: var(--color-emerald) !important;
     transform: scale(1.1);
-    opacity: 0.9;
+}
+
+.delete-btn:hover {
+    background: #ef4444 !important;
+    transform: scale(1.1);
+}
+
+.combined-totals-container h3 {
+    border-top: none !important;
+}
+
+/* Responsive Layout */
+@media (max-width: 600px) {
+    .container { padding: 20px 10px; }
+    .form-card { padding: 25px 15px; }
+    #inputGroup { flex-direction: column; gap: 15px; }
+    #inputGroup input { width: 100%; }
+    div[style*="display: flex; gap: 10px;"] { flex-direction: column; gap: 15px !important; }
+    
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    th, td { padding: 14px 12px; font-size: 14px; }
+    h3 { font-size: 20px; }
 }
