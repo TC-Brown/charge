@@ -1,66 +1,115 @@
 :root { 
-    --header-bg-color: linear-gradient(rgb(35, 7, 91), rgb(33, 117, 153));
-    --primary-color: linear-gradient(rgb(33, 117, 153), rgb(35, 7, 91)) fixed;
-    --footer-bg-color: rgb(35, 7, 91);
-    --app-bg-color: linear-gradient(420deg, gray, rgb(192, 192, 192), white, rgb(192, 192, 192), gray);
-    --border: .5px solid rgb(192, 192,192);
+    --color-purple: rgb(35, 7, 91);
+    --color-teal: rgb(33, 117, 153);
+    --color-silver: rgb(192, 192, 192);
+    --color-white: #ffffff;
+    
+    --header-bg-color: linear-gradient(135deg, var(--color-purple), var(--color-teal));
+    --primary-bg: linear-gradient(135deg, var(--color-teal), var(--color-purple)) fixed;
+    --footer-bg-color: var(--color-purple);
+    
+    --app-bg-color: rgba(255, 255, 255, 0.1);
+    --card-bg-color: rgba(255, 255, 255, 0.15);
+    
+    --border: 1px solid rgba(255, 255, 255, 0.2);
+    --border-radius: 12px;
+    --text-main: var(--color-white);
+    
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    --backdrop-blur: blur(10px);
 }
+
 * { 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     user-select: none;
 }
-header { 
-    height: 45px;
-    background: var(--header-bg-color);
-    color: white;
-    text-shadow: 0 3px 3px rgb(192, 192,192);
-    border-bottom: var(--border);
-    text-align: center;
-}
-body {
-    background: var(--primary-color);
 
+header { 
+    height: 60px;
+    background: var(--header-bg-color);
+    color: var(--text-main);
+    border-bottom: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 10;
 }
+
+body {
+    background: var(--primary-bg);
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
 footer { 
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 19px;
+    height: 40px;
     background: var(--footer-bg-color);
     border-top: var(--border);
-    color: white; 
-    text-align: center;
+    color: var(--color-silver); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    z-index: 10;
 }
 
 .app-container { 
     display: grid;
-    grid-template-columns: repeat(1, minmax(100px, 1fr));
-    margin: 5px;
-    gap: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    padding: 30px;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 60px; /* Footer spacing */
 }
+
 /*---------- App Style ----------*/
 .app {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 5px;
+    padding: 20px;
     border: var(--border);
-    border-radius: 10px;
-    color: rgb(35, 7, 91);
+    border-radius: var(--border-radius);
+    color: var(--text-main);
     background: var(--app-bg-color);
+    backdrop-filter: var(--backdrop-blur);
+    -webkit-backdrop-filter: var(--backdrop-blur);
     cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
+
+.app:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+}
+
 .app img {
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    object-fit: cover;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
+
 .app p {
-    margin-top: 5px;
-    font-size: 20px;
-    color: rgb(35, 7, 91);
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    letter-spacing: 0.3px;
 }

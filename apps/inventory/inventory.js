@@ -22,9 +22,13 @@ function toggleInputs() {
     const casesInput = document.getElementById('cases');
     const bagsInput = document.getElementById('bags');
 
-    binInput.style.display = (loc === 'Walk-in') ? 'block' : 'none';
-    casesInput.style.display = (loc === 'Wing Street') ? 'none' : 'block';
-    bagsInput.style.display = 'block';
+    const binEl = document.getElementById('binsContainer') || binInput;
+    const casesEl = document.getElementById('casesContainer') || casesInput;
+    const bagsEl = document.getElementById('bagsContainer') || bagsInput;
+
+    if(binEl) binEl.style.display = (loc === 'Walk-in') ? 'block' : 'none';
+    if(casesEl) casesEl.style.display = (loc === 'Wing Street') ? 'none' : 'block';
+    if(bagsEl) bagsEl.style.display = 'block';
 }
 function addItem() {
     const itemName = document.getElementById('itemName').value;

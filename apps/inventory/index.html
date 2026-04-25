@@ -7,18 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>T.C. Brown | Daily Inventory Tracker</title>
     <link rel="icon" href="/charge/tb-favicon.ico">
+    <link rel="stylesheet" href="../../charge.css">
     <link rel="stylesheet" href="inventory.css">
     <meta name="author" content="T. C. Brown">
     <meta name="description" content="">
     <meta name="keywords" content="Inventory, Management, Applications, Programs, T. C. Brown">
 </head>
-<header>
-    <h1>Daily Inventory Tracker</h1>
-</header>
+
 <body>
+    <header>
+        <h1>Daily Inventory Tracker</h1>
+    </header>
 
     <div class="container">
-
         <div class="form-card">
             <!-- First input is a dropdown menu of all the items in the inventory. -->
             <select name="itemName" id="itemName" class="itemName">
@@ -34,6 +35,7 @@
                 <option value="Wings Boneless">Wings (Boneless)</option>
                 <option value="Wings Traditional">Wings (Traditional)</option>
             </select>
+            
             <!-- The next input is a dropdown menu of the locations where the item can be stored. -->
             <select id="location" onchange="toggleInputs()">
                 <option value="" selected disabled>Select a Location</option>
@@ -41,6 +43,7 @@
                 <option value="Walk-in">Walk-in</option>
                 <option value="Wing Street">Wing Street</option>
             </select>
+            
             <!-- The next inputs are for the quantity of the item in the selected location. -->
             <div id="inputGroup">
                 <input type="number" id="bins" placeholder="Bins" class="walk-in-only">
@@ -50,7 +53,7 @@
 
             <div style="display: flex; gap: 10px;">
                 <button id="actionBtn" onclick="addItem()" style="flex: 1;">Add to Inventory</button>
-                <button onclick="clearForm(true)" style="flex: 1; background-color: #555;">Clear All</button>
+                <button onclick="clearForm(true)" style="flex: 1; background-color: rgba(255, 255, 255, 0.1);">Clear All</button>
             </div>
         </div>
 
@@ -60,12 +63,12 @@
 
     </div>
 
+    <footer>
+        <p> v4.1.4.2 -rc | Inventory | &copy; T.C. Brown 2026</p> 
+    </footer>
+
     <script src="inventory.js"></script>
 
 </body>
-
-<footer>
-    <p> v3.1.3-rc | Inventory | &copy; T.C. Brown 2026</p> 
-</footer>
 
 </html>
